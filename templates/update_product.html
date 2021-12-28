@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html>
+<style>
+body {font-family: Arial, Helvetica, sans-serif;}
+* {box-sizing: border-box}
+
+/* Full-width input fields */
+input[type=text], input[type=password] {
+  width: 100%;
+  padding: 15px;
+  margin: 5px 0 22px 0;
+  display: inline-block;
+  border: none;
+  background: #f1f1f1;
+}
+
+input[type=text]:focus, input[type=password]:focus {
+  background-color: #ddd;
+  outline: none;
+}
+
+hr {
+  border: 1px solid #f1f1f1;
+  margin-bottom: 25px;
+}
+
+/* Set a style for all buttons */
+button {
+  background-color: #04AA6D;
+  color: white;
+  padding: 14px 20px;
+  margin: 8px 0;
+  border: none;
+  cursor: pointer;
+  width: 100%;
+  opacity: 0.9;
+}
+
+button:hover {
+  opacity:1;
+}
+
+/* Extra styles for the cancel button */
+.cancelbtn {
+  padding: 14px 20px;
+  background-color: #f44336;
+}
+
+/* Float cancel and signup buttons and add an equal width */
+.cancelbtn, .signupbtn {
+  float: left;
+  width: 50%;
+}
+
+/* Add padding to container elements */
+.container {
+  padding: 16px;
+}
+
+/* Clear floats */
+.clearfix::after {
+  content: "";
+  clear: both;
+  display: table;
+}
+
+/* Change styles for cancel button and signup button on extra small screens */
+@media screen and (max-width: 300px) {
+  .cancelbtn, .signupbtn {
+     width: 100%;
+  }
+}
+
+.avatar {
+  vertical-align: middle;
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+}
+</style>
+<body>
+  {% include 'banner.html' %}
+
+<form action="" method="post" enctype="multipart/form-data" style="border:1px solid #ccc"  >
+  <div class="container">
+    <h1>Update profile</h1> {{file}}
+    <p>Please fill in this form update your profile.</p>
+    <img src="{{url_for('static', filename=data[0][4])}}" alt="Avatar" class="avatar">
+    <hr>
+
+    <label for="id"><b>id</b></label>
+    <input type="text" placeholder="id" id="id" name="id" readonly value="{{data[0][0]}}" required>
+
+
+    <label ><b>Name</b></label>
+    <input type="text" placeholder="name" id="nom" name="nom"value="{{data[0][1]}}" required>
+    
+    <label ><b>Price</b></label>
+    <input type="number" placeholder="Price" name="prix" id="prix" value="{{data[0][2]}}" required>
+
+    <label ><b>Quantity</b></label>
+    <input type="number" placeholder="Quantity" name="qte" id="qte" value="{{data[0][3]}}" required>
+
+
+    <label for="img">Select image:</label>
+    <input type="file" id="file" name="file" accept="image/*">
+    
+
+    <div class="clearfix">
+      <button type="button" class="cancelbtn">Cancel</button>
+      <button type="submit" class="signupbtn">Update</button>
+    </div>
+  </div>
+</form>
+
+</body>
+</html>

@@ -1,0 +1,72 @@
+<ul>
+  <li><a  href="{{url_for('profile',mail=session['mail'])}}">Profile</a></li>
+  <li><a href="{{url_for('add_product')}}">Add Product</a></li>
+  <li><a href="{{url_for('list_product')}}">List Product</a></li>
+  <li><a href="{{url_for('bill',mail=session['mail'])}}">Bill</a></li>
+
+  <li><a href="{{url_for('logout')}}">Logout</a></li>
+</ul>
+
+<div class="cart">
+
+  {%for product in session['cart']%}
+    <div class="product">{{product[1]}}  {{product[2]}}</div>
+    <div><a href="{{url_for('remove_cart',id=product[0])}}">X</a></div>
+    {% endfor %}
+    <div>total :${{session['total']}}</div>
+   <li> <a href="{{url_for('pay')}}">Pay</a></li>
+</div>
+  
+
+<footer> <!------>
+  <p class="text-center">Copyright &copy; Graines d'entrepreneurs</p> <!------>
+</footer>  <!------>
+<style>
+
+.text-center {
+  text-align: center; 
+}
+footer {
+  position: fixed;
+  width: 100%;
+  left: 0;
+  bottom: 0;
+}
+  ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    background-color: #333;
+  }
+  
+  li {
+    float: left;
+  }
+  
+  li a {
+    display: block;
+    color: white;
+    text-align: center;
+    padding: 14px 16px;
+    text-decoration: none;
+  }
+  
+  li a:hover {
+    background-color: #111;
+  }
+
+  .cart {
+    float: right;
+    background-color: green;
+    border-radius: 25%;
+    border:black ;
+    border-style: solid;
+    padding: 10px;
+  }
+
+
+  .product{
+    font-weight: bold;
+  }
+  </style>

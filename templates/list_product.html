@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html>
+<head>
+<style>
+
+  .column{
+    float:left ;
+    width: 25;
+    padding: 0 10px;
+  }
+
+
+  .row {
+    margin: 0 -5px;
+  }
+
+  .row:after{
+    content: "";
+    display: table;
+    clear: both;
+  }
+
+
+
+.card {
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+  max-width: 300px;
+  margin: auto;
+  text-align: center;
+  font-family: arial;
+}
+
+.price {
+  color: grey;
+  font-size: 22px;
+}
+
+.card button {
+  border: none;
+  outline: 0;
+  padding: 12px;
+  color: white;
+  background-color: #000;
+  text-align: center;
+  cursor: pointer;
+  width: 100%;
+  font-size: 18px;
+}
+
+.card button:hover {
+  opacity: 0.7;
+}
+</style>
+</head>
+<body>
+    {% include 'banner.html' %}
+<div class="row">  
+{% for product in data %}
+<div class="column"> 
+<h2 style="text-align:center">Product Card</h2>
+<div class="card">
+  <img src="{{url_for('static', filename=product[4])}}" style="width:250px; height: 250px;">
+  <h1>{{product[1]}}</h1>
+  <p class="price">$ {{product[2]}}</p>
+  <a href="{{url_for('add_cart',id=product[0])}}"> 
+     <p><button>Add to Cart</button></p>
+    </a> 
+
+
+  <a href="{{url_for('update',id=product[0])}}"> 
+    <p><button>Update</button></p>
+    </a>
+
+</div>
+</div>
+{% endfor %}
+</div>
+</body>
+</html>

@@ -1,0 +1,32 @@
+{% include 'banner.html' %}
+
+
+<div class="content"> <!----->
+<h2>List Group</h2>
+<p>Transform a basic list into a list group:</p>
+
+<ul>
+    {% for purchase in data %}
+    <li> {{purchase[4]}}: ${{purchase[5]}} </li>  
+    {% endfor %}
+</ul>
+
+</div><!----->
+
+<style>
+ 
+    
+    .content ul {
+      list-style-type: none;
+      padding: 0;
+      margin: 0;
+    }
+    
+    .content ul li {
+      border: 1px solid #ddd;
+      margin-top: -1px; /* Prevent double borders */
+      background-color: #f6f6f6;
+      padding: 12px;
+    }
+    </style>
+  
