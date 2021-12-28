@@ -33,7 +33,7 @@ def index():
         password = details['password']
         try:
             cur = mysql.connection.cursor()
-            cur.execute("INSERT INTO User(email, password)VALUES(%s,%s)",(mail, password))
+            cur.execute("INSERT INTO user(email, password)VALUES(%s,%s)",(mail, password))
         except Exception:
             return render_template("index.html",error = "this email is already in use")
         mysql.connection.commit()
