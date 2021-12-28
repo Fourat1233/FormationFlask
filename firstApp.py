@@ -9,7 +9,7 @@ app = Flask(__name__)
 app.secret_key = "any random string"
 mysql = MySQL(app)
 # app.config['MYSQL_HOST'] = 'localhost'
-# app.config['MYSQL_USER']= 'root'
+# app.config['MYSQL_user']= 'root'
 # app.config['MYSQL_PASSWORD'] = ''
 # app.config['MYSQL_DB'] = 'firstappdb'
 
@@ -83,7 +83,7 @@ def profile(mail):
             filename = secure_filename(file.filename)
             file.save(os.path.join(app.config['UPLOAD_FOLDER'], filename))
             cur = mysql.connection.cursor()
-            cur.execute("UPDATE User set photo=%s where email=%s",(filename,mail))
+            cur.execute("UPDATE user set photo=%s where email=%s",(filename,mail))
             mysql.connection.commit()
             cur.close()
         cur = mysql.connection.cursor()
